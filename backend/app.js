@@ -1,6 +1,8 @@
 const express = require("express");
-
+const bodyPerser = require("body-parser");
 const app = express();
+
+app.use(bodyPerser.json());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -15,16 +17,18 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use("/second", (req, res, next) => {
-  res.send("second");
-  next();
-});
+// app.post('/posts/add', (req, res, next) => {
+// 	const post = req.body;
+// 	res.status(201).json({
+// 		message: 'Post added sucessfully'
+// 	});
+// });
 
-app.use("/posts", (req, res, next) => {
+// app.get("/posts", (req, res, next) => {
 
-  res.status(200).json({
-		message: "Succesfully",
-		// ...
-  });
-});
+//   res.status(200).json({
+// 		message: "Successfully",
+// 		// ...
+//   });
+// });
 module.exports = app;
